@@ -5,10 +5,10 @@
  * to other projects. They're quick imperfect implementations
  * for the known, fixed data we work with here.
  */
-import differenceInDays from 'date-fns/differenceInDays';
+import differenceInDays from "date-fns/differenceInDays";
 
 export function formatPrice(price) {
-  return `$${price / 100}`;
+  return `$${Math.floor(price / 100)}`;
 }
 
 export function pluralize(string, num) {

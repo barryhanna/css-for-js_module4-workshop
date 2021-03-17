@@ -31,6 +31,8 @@ const ShoeCard = ({
       ? 'new-release'
       : 'default'
 
+  const onSale = variant === "on-sale";
+
   return (
     <Link href={`/shoe/${slug}`}>
       <Wrapper>
@@ -40,12 +42,15 @@ const ShoeCard = ({
         <Spacer size={12} />
         <Row>
           <Name>{name}</Name>
-          <Price>{formatPrice(price)}</Price>
+          <Price style={{ textDecoration: onSale ? "line-through" : "none" }}>
+            {formatPrice(price)}
+          </Price>
+          {onSale ? <SalePrice>{formatPrice(price * 0.75)}</SalePrice> : ""}
         </Row>
         <Row>
           <ColorInfo>{pluralize("Color", numOfColors)}</ColorInfo>
         </Row>
-        {variant === "on-sale" ? (
+        {onSale ? (
           <ShowcaseLabelSale>Sale</ShowcaseLabelSale>
         ) : variant === "new-release" ? (
           <ShowcaseLabelNew>Just Released!</ShowcaseLabelNew>
@@ -101,6 +106,9 @@ const ColorInfo = styled.p`
 `;
 
 const SalePrice = styled.span`
+  position: absolute;
+  bottom: 0.1rem;
+  right: 0;
   font-weight: ${WEIGHTS.medium};
   color: ${COLORS.primary};
 `;
