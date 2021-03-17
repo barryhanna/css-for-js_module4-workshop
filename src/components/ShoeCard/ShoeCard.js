@@ -42,7 +42,12 @@ const ShoeCard = ({
         <Spacer size={12} />
         <Row>
           <Name>{name}</Name>
-          <Price style={{ textDecoration: onSale ? "line-through" : "none" }}>
+          <Price
+            style={{
+              textDecoration: onSale ? "line-through" : "none",
+              color: onSale ? COLORS.gray[700] : "inherit",
+            }}
+          >
             {formatPrice(price)}
           </Price>
           {onSale ? <SalePrice>{formatPrice(price * 0.75)}</SalePrice> : ""}
