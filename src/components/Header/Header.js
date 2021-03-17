@@ -42,7 +42,7 @@ const Nav = styled.nav`
   justify-content: space-between;
   margin-left: auto;
   margin-right: auto;
-  gap: 16px;
+  gap: 40px;
 `;
 
 const NavLink = styled.a`
